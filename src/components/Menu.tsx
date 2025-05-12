@@ -29,7 +29,7 @@ const Menu: React.FC<MenuProps> = ({ activeSection, setActiveSection }) => {
   };
   
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-slate-900 border-b border-teal-700 z-50 w-full">
+    <nav className="fixed top-0 left-0 right-0 bg-slate-900 border-b border-slate-400 z-50 w-full">
       <div className="max-w-[1200px] w-full mx-auto px-4 py-1">
         <div className="flex justify-between items-center">
           <div className="text-base text-cyan-400 truncate">
@@ -90,7 +90,7 @@ const Menu: React.FC<MenuProps> = ({ activeSection, setActiveSection }) => {
 
         {/* Menu mobile */}
         {menuOpen && (
-          <div className="md:hidden mt-1 py-2 border-t border-teal-700/50 animate-fadeIn">
+          <div className="md:hidden mt-1 py-2 border-t border-slate-400 animate-fadeIn">
             <ul className="flex flex-col space-y-2 text-base">
               <li>
                 <a 

@@ -4,7 +4,7 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="border-t border-teal-700 py-6 mt-8">
+    <footer className="border-t border-slate-400 py-6 mt-8">
       <div className="max-w-[1200px] mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center">
