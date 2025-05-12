@@ -66,7 +66,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-200 overflow-x-hidden w-full">
+    <div className="min-h-screen bg-slate-900 text-slate-400 overflow-x-hidden w-full">
       <Menu activeSection={activeSection} setActiveSection={setActiveSection} />
       <main className="max-w-[1200px] mx-auto px-4 flex-grow w-full text-sm leading-relaxed">
         <HomeHome />

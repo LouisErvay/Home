@@ -41,7 +41,7 @@ const HomeContact: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label htmlFor="name" className="block text-sm">
-                  <span className="text-amber-400 opacity-90">NOM:</span>
+                  <span className="text-amber-400 90">NOM:</span>
                 </label>
                 <input
                   type="text"
@@ -56,7 +56,7 @@ const HomeContact: React.FC = () => {
               </div>
               <div className="space-y-2">
                 <label htmlFor="email" className="block text-sm">
-                  <span className="text-amber-400 opacity-90">EMAIL:</span>
+                  <span className="text-amber-400 90">EMAIL:</span>
                 </label>
                 <input
                   type="email"
@@ -72,7 +72,7 @@ const HomeContact: React.FC = () => {
             </div>
             <div className="space-y-2">
               <label htmlFor="subject" className="block text-sm">
-                <span className="text-amber-400 opacity-90">OBJET:</span>
+                <span className="text-amber-400 90">OBJET:</span>
               </label>
               <input
                 type="text"
@@ -87,7 +87,7 @@ const HomeContact: React.FC = () => {
             </div>
             <div className="space-y-2">
               <label htmlFor="message" className="block text-sm">
-                <span className="text-amber-400 opacity-90">MESSAGE:</span>
+                <span className="text-amber-400 90">MESSAGE:</span>
               </label>
               <textarea
                 id="message"

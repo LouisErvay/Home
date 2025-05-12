@@ -10,22 +10,22 @@ const HomeSkills: React.FC = () => {
       <div className="border border-teal-700 p-6 mb-8 rounded-md">
         <div className="space-y-3">
           <div className="border-b border-teal-700 py-2">
-            <span className="text-amber-400 opacity-90">React.js</span>
+            <span className="text-amber-400">React.js</span>
           </div>
           <div className="border-b border-teal-700 py-2">
-            <span className="text-amber-400 opacity-90">JavaScript</span>
+            <span className="text-amber-400">JavaScript</span>
           </div>
           <div className="border-b border-teal-700 py-2">
-            <span className="text-amber-400 opacity-90">TypeScript</span>
+            <span className="text-amber-400">TypeScript</span>
           </div>
           <div className="border-b border-teal-700 py-2">
-            <span className="text-amber-400 opacity-90">Node.js</span>
+            <span className="text-amber-400">Node.js</span>
           </div>
           <div className="border-b border-teal-700 py-2">
-            <span className="text-amber-400 opacity-90">TailwindCSS</span>
+            <span className="text-amber-400">TailwindCSS</span>
           </div>
           <div className="py-2">
-            <span className="text-amber-400 opacity-90">Git</span>
+            <span className="text-amber-400">Git</span>
           </div>
         </div>
       </div>
