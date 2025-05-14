@@ -1,0 +1,64 @@
+/* Backgrounds personnalisés */
+
+.bg-dots-wave {
+  background-color: #030712;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Couche de points statique */
+.bg-dots-wave::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle, rgba(203, 213, 225, 0.2) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+/* Couche de points animée */
+.dots-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle, rgba(203, 213, 225, 0.2) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 20px 20px;
+  pointer-events: none;
+  mask-image: linear-gradient(
+    to left,
+    transparent 0%,
+    black 20%,
+    black 80%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to left,
+    transparent 0%,
+    black 20%,
+    black 80%,
+    transparent 100%
+  );
+  animation: dotsMoveRightToLeft 12s infinite linear;
+}
+
+@keyframes dotsMoveRightToLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-40px);
+  }
+}
+
+/* Classe pour le second background */
+.bg-second {
+  background-color: rgb(30, 27, 75); /* bg-indigo-950 */
+}

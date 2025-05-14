@@ -85,7 +85,7 @@ const HomeProjects: React.FC = () => {
     <div id="projects" className="mt-16 scroll-mt-16">
       <div className="flex items-center mb-4">
         <span className="text-2xl mr-2 text-slate-400">$ </span>
-        <span className="text-2xl text-cyan-400">cd ../Projects</span>
+        <span className="text-2xl font-bold text-cyan-400">cd ../Projects</span>
       </div>
       <div className="border border-slate-400 p-6 mb-8 rounded-md hover:border-cyan-400 transition-all duration-300 hover:shadow-[0_0_10px_rgba(34,211,238,0.2)]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
