@@ -104,6 +104,10 @@ const HomeProjects: React.FC = () => {
               </div>
             </div>
           ))}
+
+        </div>
+        <div className="pt-4 text-xs text-slate-400">
+          Cliquez sur un projet pour en savoir plus.
         </div>
       </div>
 
