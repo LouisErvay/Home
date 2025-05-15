@@ -82,34 +82,33 @@ const HomeProjects: React.FC = () => {
   };
 
   return (
-    <div id="projects" className="mt-16 scroll-mt-16">
+    <section id="projects" className="mt-16 scroll-mt-16">
       <div className="flex items-center mb-4">
         <span className="text-2xl mr-2 text-slate-400">$ </span>
         <span className="text-2xl font-bold text-cyan-400">cd ../Projects</span>
       </div>
-      <div className="border border-slate-400 p-6 mb-8 rounded-md hover:border-cyan-400 transition-all duration-300 hover:shadow-[0_0_10px_rgba(34,211,238,0.2)]">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <article className="border border-slate-400 p-6 mb-8 rounded-md hover:border-cyan-400 transition-all duration-300 hover:shadow-[0_0_10px_rgba(34,211,238,0.2)]">
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project) => (
-            <div 
+            <li 
               key={project.id}
               className="border border-slate-400 p-3 rounded-lg hover:border-cyan-400 hover:scale-[1.02] transition-all cursor-pointer"
               onClick={() => openModal(project)}
             >
-              <div className="flex">
-                <div className="text-3xl mr-4 self-center">{project.emoji}</div>
+              <article className="flex">
+                <figure className="text-3xl mr-4 self-center">{project.emoji}</figure>
                 <div>
                   <h3 className="text-xl font-bold text-slate-400 mb-1">{project.title}</h3>
                   <p className="text-amber-400 font-semibold">{formatTechnologies(project.technologies)}</p>
                 </div>
-              </div>
-            </div>
+              </article>
+            </li>
           ))}
-
-        </div>
+        </ul>
         <div className="pt-4 text-xs text-slate-400">
           Cliquez sur un projet pour en savoir plus.
         </div>
-      </div>
+      </article>
 
       {selectedProject && (
         <ModaleProject 
@@ -117,7 +116,7 @@ const HomeProjects: React.FC = () => {
           onClose={closeModal} 
         />
       )}
-    </div>
+    </section>
   );
 };
 

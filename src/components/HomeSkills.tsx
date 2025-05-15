@@ -132,22 +132,23 @@ const HomeSkills: React.FC = () => {
   };
 
   return (
-    <div id="skills" className="mt-16 scroll-mt-16">
+    <section id="skills" className="mt-16 scroll-mt-16">
       <div className="flex items-center mb-4">
         <span className="text-2xl mr-2 text-slate-400">$ </span>
         <span className="text-2xl font-bold text-cyan-400">cd ../Skills</span>
       </div>
       
-      <div className="mb-3 flex space-x-2 text-sm">
+      <nav className="mb-3 flex space-x-2 text-sm" aria-label="Tri des compétences">
         <button 
           className={`px-2 py-0.5 rounded ${sortColumn === 'pid' ? 'bg-blue-900' : 'bg-slate-700'} ${hoveredButton === 'pid' ? 'bg-slate-900 text-slate-300' : 'text-white'} flex items-center`}
           onClick={() => handleSort('pid')}
           onMouseEnter={() => setHoveredButton('pid')}
           onMouseLeave={() => setHoveredButton(null)}
+          aria-pressed={sortColumn === 'pid'}
         >
           PID
           {sortColumn === 'pid' && (
-            <span className="ml-1">
+            <span className="ml-1" aria-hidden="true">
               {getSortArrow('pid')}
             </span>
           )}
@@ -157,10 +158,11 @@ const HomeSkills: React.FC = () => {
           onClick={() => handleSort('name')}
           onMouseEnter={() => setHoveredButton('name')}
           onMouseLeave={() => setHoveredButton(null)}
+          aria-pressed={sortColumn === 'name'}
         >
           Nom
           {sortColumn === 'name' && (
-            <span className="ml-1">
+            <span className="ml-1" aria-hidden="true">
               {getSortArrow('name')}
             </span>
           )}
@@ -170,10 +172,11 @@ const HomeSkills: React.FC = () => {
           onClick={() => handleSort('level')}
           onMouseEnter={() => setHoveredButton('level')}
           onMouseLeave={() => setHoveredButton(null)}
+          aria-pressed={sortColumn === 'level'}
         >
           Niveau
           {sortColumn === 'level' && (
-            <span className="ml-1">
+            <span className="ml-1" aria-hidden="true">
               {getSortArrow('level')}
             </span>
           )}
@@ -183,61 +186,62 @@ const HomeSkills: React.FC = () => {
           onClick={() => handleSort('category')}
           onMouseEnter={() => setHoveredButton('category')}
           onMouseLeave={() => setHoveredButton(null)}
+          aria-pressed={sortColumn === 'category'}
         >
           Catégorie
           {sortColumn === 'category' && (
-            <span className="ml-1">
+            <span className="ml-1" aria-hidden="true">
               {getSortArrow('category')}
             </span>
           )}
         </button>
-      </div>
+      </nav>
       
-      <div className="border p-4 border-slate-400 rounded-md hover:border-cyan-400 transition-all duration-300 hover:shadow-[0_0_10px_rgba(34,211,238,0.2)]">
+      <article className="border p-4 border-slate-400 rounded-md hover:border-cyan-400 transition-all duration-300 hover:shadow-[0_0_10px_rgba(34,211,238,0.2)]">
           {/* En-tête */}
           <div className="flex items-center text-xs text-slate-300 pb-2">
-            <div className="w-16 text-center">PID</div>
-            <div className="w-32 font-bold">NAME</div>
-            <div className="flex-1">LEVEL</div>
-            <div className="w-24 text-sm font-bold">CAT</div>
+            <span className="w-16 text-center">PID</span>
+            <span className="w-32 font-bold">NAME</span>
+            <span className="flex-1">LEVEL</span>
+            <span className="w-24 text-sm font-bold">CAT</span>
           </div>
           
           {/* Liste des compétences */}
-          <div className="divide-y divide-slate-700">
+          <ul className="divide-y divide-slate-700" role="list">
             {sortedSkills.map((skill) => (
-              <div key={skill.pid}>
-                <div 
+              <li key={skill.pid}>
+                <article 
                   className="flex items-center py-2 text-sm cursor-pointer hover:bg-slate-800"
                   onMouseEnter={() => setHoveredSkill(skill)}
                   onMouseLeave={() => setHoveredSkill(null)}
                 >
-                  <div className="w-16 text-center font-mono text-cyan-400">{skill.pid}</div>
-                  <div className="w-32 font-bold text-amber-400 truncate">{skill.name}</div>
+                  <span className="w-16 text-center font-mono text-cyan-400">{skill.pid}</span>
+                  <h3 className="w-32 font-bold text-amber-400 truncate">{skill.name}</h3>
                   <div className="flex-1 flex items-center">
-                    <div className="h-2 bg-slate-700 w-11/12 rounded-full overflow-hidden">
+                    <div className="h-2 bg-slate-700 w-11/12 rounded-full overflow-hidden" role="progressbar" aria-valuenow={skill.level} aria-valuemin={0} aria-valuemax={100}>
                       <div 
                         className={`h-full ${getLevelColor(skill.level)}`}
                         style={{ width: `${skill.level}%` }}
                       ></div>
                     </div>
                   </div>
-                  <div className="w-24 text-xs font-bold text-slate-300 uppercase">{skill.category}</div>
-                </div>
+                  <span className="w-24 text-xs font-bold text-slate-300 uppercase">{skill.category}</span>
+                </article>
                 
                 {hoveredSkill === skill && (
-                  <div className="py-2 px-4 text-sm text-slate-300 italic bg-slate-800">
+                  <aside className="py-2 px-4 text-sm text-slate-300 italic bg-slate-800">
                     {skill.desc}
-                  </div>
+                  </aside>
                 )}
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         
         <div className="pl-4 pt-2 text-xs text-slate-400">
           Survolez une compétence pour voir les détails. Utilisez les boutons pour trier.
         </div>
-      </div>
-    </div>
+      </article>
+    </section>
   );
 };
 

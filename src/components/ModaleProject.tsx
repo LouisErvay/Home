@@ -28,47 +28,48 @@ const ModaleProject: React.FC<ModaleProjectProps> = ({ project, onClose }) => {
   };
 
   return (
-    <div 
+    <dialog 
       className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4"
       onClick={onClose}
+      open
     >
-      <div 
+      <article 
         className="bg-slate-800 border border-slate-400 rounded-lg p-6 max-w-3xl w-full max-h-[90vh] overflow-y-auto"
         onClick={handleContentClick}
       >
         <div className="flex items-center mb-3">
-          <div className="text-4xl mr-4">{project.emoji}</div>
+          <figure className="text-4xl mr-4">{project.emoji}</figure>
           <h2 className="text-2xl font-bold text-cyan-400">{project.title}</h2>
         </div>
         
-        <div className="border-b border-slate-500 mb-4"></div>
+        <hr className="border-b border-slate-500 mb-4" />
         
-        <div className="mb-5 mt-4">
+        <section className="mb-5 mt-4">
           <p className="text-slate-400">{project.description}</p>
-        </div>
+        </section>
         
-        <div className="mb-5">
+        <section className="mb-5">
           <h3 className="text-lg font-semibold text-slate-300 mb-1">Contexte</h3>
           <p className="text-slate-400 pl-8">{project.contexte}</p>
-        </div>
+        </section>
         
-        <div className="mb-5">
+        <section className="mb-5">
           <h3 className="text-lg font-semibold text-slate-300 mb-1">Fonctionnalités</h3>
           <ul className="list-disc pl-12 text-slate-400">
             {project.fonctionnalites.map((fonctionnalite, index) => (
               <li key={index}>{fonctionnalite}</li>
             ))}
           </ul>
-        </div>
+        </section>
         
-        <div className="mb-6">
+        <section className="mb-6">
           <h3 className="text-lg font-semibold text-slate-300 mb-1">Technologies</h3>
           <ul className="list-disc pl-12 text-slate-400">
             {project.technologies.map((technologie, index) => (
               <li key={index}>{technologie}</li>
             ))}
           </ul>
-        </div>
+        </section>
         
         <div className="flex justify-end space-x-3">
           {project.github && (
@@ -91,8 +92,8 @@ const ModaleProject: React.FC<ModaleProjectProps> = ({ project, onClose }) => {
             Fermer
           </button>
         </div>
-      </div>
-    </div>
+      </article>
+    </dialog>
   );
 };
 
