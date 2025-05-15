@@ -1,4 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import emailjs from 'emailjs-com';
+import ReCAPTCHA from 'react-google-recaptcha';
+
+// Définition des variables d'environnement par défaut
+const EMAILJS_SERVICE_ID = 'emailjs-service-id';
+const EMAILJS_TEMPLATE_ID = 'emailjs-template-id';
+const EMAILJS_USER_ID = 'emailjs-user-id';
+const RECAPTCHA_SITE_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"; // Clé de test de google recaptcha 
 
 const HomeContact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -7,6 +15,10 @@ const HomeContact: React.FC = () => {
     subject: '',
     message: ''
   });
+  const [sending, setSending] = useState(false);
+  const [sendStatus, setSendStatus] = useState<{type: 'success' | 'error', message: string} | null>(null);
+  const [captchaVerified, setCaptchaVerified] = useState(false);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -16,16 +28,63 @@ const HomeContact: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleCaptchaChange = (token: string | null) => {
+    setCaptchaVerified(!!token);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Ici vous pourriez ajouter la logique d'envoi du formulaire
-    // Réinitialiser le formulaire après soumission
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
+    
+    if (!captchaVerified) {
+      setSendStatus({
+        type: 'error',
+        message: 'Veuillez valider le captcha avant d\'envoyer votre message.'
+      });
+      return;
+    }
+    
+    setSending(true);
+    setSendStatus(null);
+    
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: `Message de mon site : ${formData.subject}`,
+        message: `Message de ${formData.name} | adresse mail : ${formData.email}\nMessage :\n${formData.message}`
+      };
+      
+      // Essayer d'utiliser les variables d'environnement via import.meta.env, sinon utiliser les valeurs par défaut
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID || EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || EMAILJS_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_USER_ID || EMAILJS_USER_ID
+      );
+      
+      setSendStatus({
+        type: 'success',
+        message: 'Votre message a été envoyé avec succès!'
+      });
+      
+      // Réinitialiser le formulaire et le captcha après soumission
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+      setCaptchaVerified(false);
+      recaptchaRef.current?.reset();
+    } catch (error) {
+      console.error('Erreur lors de l\'envoi du message:', error);
+      setSendStatus({
+        type: 'error',
+        message: 'Une erreur est survenue lors de l\'envoi de votre message.'
+      });
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -100,13 +159,31 @@ const HomeContact: React.FC = () => {
                 placeholder="Votre message..."
               ></textarea>
             </fieldset>
-            <div>
-              <button
-                type="submit"
-                className="bg-slate-800 border border-slate-400 hover:bg-slate-700 hover:border-cyan-400 text-cyan-400 px-6 py-2 rounded-sm transition flex items-center"
-              >
-                <span>Envoyer</span>
-              </button>
+            
+            {sendStatus && (
+              <div className={`p-3 rounded-sm ${sendStatus.type === 'success' ? 'bg-green-900/30 text-green-400 border border-green-700' : 'bg-red-900/30 text-red-400 border border-red-700'}`}>
+                {sendStatus.message}
+              </div>
+            )}
+            
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="w-full md:w-auto">
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY || RECAPTCHA_SITE_KEY}
+                  onChange={handleCaptchaChange}
+                  theme="dark"
+                />
+              </div>
+              <div className="w-full md:w-auto">
+                <button
+                  type="submit"
+                  disabled={sending || !captchaVerified}
+                  className={`w-full md:w-auto bg-slate-800 border border-slate-400 hover:bg-slate-700 hover:border-cyan-400 text-cyan-400 px-6 py-2 rounded-sm transition flex items-center justify-center ${(sending || !captchaVerified) ? 'opacity-50 cursor-not-allowed' : ''}`}
+                >
+                  <span>{sending ? 'Envoi en cours...' : 'Envoyer'}</span>
+                </button>
+              </div>
             </div>
           </form>
         </div>
