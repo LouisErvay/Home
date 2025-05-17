@@ -1,3 +1,6 @@
+/* Importation de la police Hack */
+@import url('https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,7 +8,7 @@
 /* Si vous voulez garder certains styles personnalisés, vous pouvez les ajouter ici */
 @layer base {
   :root {
-    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-family: 'Hack', monospace, system-ui, Avenir, Helvetica, Arial, sans-serif;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;

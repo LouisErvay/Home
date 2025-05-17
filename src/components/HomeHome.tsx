@@ -13,10 +13,10 @@ const HomeHome: React.FC = () => {
           <h1 className="text-4xl font-bold mb-2 text-amber-400">Louis ERVAY</h1>
           <p className="text-slate-300 mb-4">Développeur Backend | JAVA | PYTHON | Spring Boot | JPA | Django | APIs</p>
           <p className="mb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. <span className="text-amber-400">✨</span>
+            Passionné par le développement robuste et performant, je mets à profit mes compétences pour créer des solutions efficaces et durables. <span className="text-amber-400">✨</span>
           </p>
           <p>
-            Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere.
+            Bac + 3 Concepteur Développeur d'Applications avec des expériences en ERP et API REST, je cherche actuellement une alternance pour confirmer ma formation et poursuivre en Master.
           </p>
         </div>
       </article>

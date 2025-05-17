@@ -13,74 +13,74 @@ type Skill = {
 const skillsList: Skill[] = [
   { 
     pid: 1001, 
-    name: "React.js", 
-    level: 72, 
-    category: "FRONTEND", 
-    desc: "Création d'applications web modernes avec des composants réutilisables et un état géré efficacement." 
+    name: "Python", 
+    level: 90, 
+    category: "LANGUAGE", 
+    desc: "Django, FastAPI, Tensorflow, PyTorch, Keras, Scikit-learn, Pandas, Numpy, Matplotlib" 
   },
   { 
     pid: 1002, 
-    name: "JavaScript", 
-    level: 75, 
-    category: "FRONTEND", 
-    desc: "Développement d'applications web interactives et dynamiques." 
+    name: "Java", 
+    level: 80, 
+    category: "LANGUAGE", 
+    desc: "Spring Boot, Hibernate, JPA, JUnit, Mockito, Maven, Gradle" 
   },
   { 
     pid: 1003, 
-    name: "TypeScript", 
-    level: 20, 
-    category: "FRONTEND", 
-    desc: "Typage statique pour JavaScript, améliorant la qualité du code et la détection d'erreurs." 
-  },
-  { 
-    pid: 1004, 
-    name: "Node.js", 
+    name: "JavaScript/TypeScript", 
     level: 75, 
-    category: "BACKEND", 
-    desc: "Création de serveurs et d'APIs performants avec JavaScript côté serveur." 
+    category: "LANGUAGE", 
+    desc: "React, Node.js, Express, MongoDB, MySQL, PostgreSQL, Docker, Git, HTML/CSS" 
   },
   { 
     pid: 1005, 
-    name: "TailwindCSS", 
-    level: 65, 
-    category: "FRONTEND", 
+    name: "SQL", 
+    level: 85, 
+    category: "DATABASE", 
     desc: "Framework CSS utilitaire pour créer des interfaces utilisateur personnalisées rapidement." 
   },
   { 
     pid: 1006, 
     name: "Git", 
-    level: 30, 
+    level: 90, 
     category: "TOOL", 
     desc: "Gestion de versions et collaboration sur des projets de développement." 
   },
   { 
     pid: 1007, 
-    name: "SQL", 
-    level: 40, 
-    category: "DATABASE", 
-    desc: "Conception et interrogation de bases de données relationnelles." 
-  },
-  { 
-    pid: 1008, 
     name: "HTML/CSS", 
-    level: 45, 
+    level: 85, 
     category: "FRONTEND", 
     desc: "Création de structures de pages web et stylisation pour une expérience utilisateur optimale." 
   },
   { 
+    pid: 1008, 
+    name: "Gestion de projet", 
+    level: 55, 
+    category: "SOFTSKILL", 
+    desc: "Création de structures de pages web et stylisation pour une expérience utilisateur optimale." 
+  },
+  { 
     pid: 1009, 
-    name: "Tests", 
-    level: 50, 
-    category: "QUALITY", 
-    desc: "Mise en place de tests unitaires et d'intégration pour assurer la qualité du code." 
+    name: "Docker", 
+    level: 55, 
+    category: "TOOL", 
+    desc: "Création de structures de pages web et stylisation pour une expérience utilisateur optimale." 
   },
   { 
     pid: 1010, 
     name: "CI/CD", 
-    level: 75, 
+    level: 55, 
     category: "DEVOPS", 
-    desc: "Automatisation des processus d'intégration et de déploiement continus." 
+    desc: "Gestion de versions et collaboration sur des projets de développement." 
   },
+  { 
+    pid: 1011, 
+    name: "Tests", 
+    level: 70, 
+    category: "QUALITY", 
+    desc: "Tests unitaires et tests de non-régression, avec JUnit, Mockito" 
+  }
 ];
 
 // Fonction pour obtenir la couleur de la barre de progression en fonction du niveau
@@ -201,8 +201,8 @@ const HomeSkills: React.FC = () => {
           {/* En-tête */}
           <div className="flex items-center text-xs text-slate-300 pb-2">
             <span className="w-16 text-center">PID</span>
-            <span className="w-32 font-bold">NAME</span>
-            <span className="flex-1">LEVEL</span>
+            <span className="w-48 font-bold">NAME</span>
+            <span className="flex-1 font-bold">LEVEL</span>
             <span className="w-24 text-sm font-bold">CAT</span>
           </div>
           
@@ -216,7 +216,7 @@ const HomeSkills: React.FC = () => {
                   onMouseLeave={() => setHoveredSkill(null)}
                 >
                   <span className="w-16 text-center font-mono text-cyan-400">{skill.pid}</span>
-                  <h3 className="w-32 font-bold text-amber-400 truncate">{skill.name}</h3>
+                  <h3 className="w-48 font-bold text-amber-400 truncate">{skill.name}</h3>
                   <div className="flex-1 flex items-center">
                     <div className="h-2 bg-slate-700 w-11/12 rounded-full overflow-hidden" role="progressbar" aria-valuenow={skill.level} aria-valuemin={0} aria-valuemax={100}>
                       <div 
