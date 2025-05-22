@@ -12,7 +12,6 @@ const Home: React.FC = () => {
   const [background, setBackground] = useState<string>('bg-dots-wave');
 
   const updateActiveSection = () => {
-    const homeSection = document.getElementById('home');
     const skillsSection = document.getElementById('skills');
     const projectsSection = document.getElementById('projects');
     const contactSection = document.getElementById('contact');
