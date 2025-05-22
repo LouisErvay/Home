@@ -3,12 +3,14 @@ import React from 'react';
 interface Project {
   id: number;
   emoji: string;
+  imageUrl?: string;
   title: string;
   description: string;
   contexte: string;
   fonctionnalites: string[];
   technologies: string[];
   github?: string;
+  videoUrl?: string;
 }
 
 interface ModaleProjectProps {
@@ -31,14 +33,23 @@ const ModaleProject: React.FC<ModaleProjectProps> = ({ project, onClose }) => {
     <div 
       className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4"
       onClick={onClose}
-      open
     >
       <article 
         className="bg-slate-800 border border-slate-400 rounded-lg p-6 max-w-3xl w-full max-h-[90vh] overflow-y-auto"
         onClick={handleContentClick}
       >
         <div className="flex items-center mb-3">
-          <figure className="text-4xl mr-4">{project.emoji}</figure>
+          <figure className="mr-4">
+            {project.imageUrl ? (
+              <img 
+                src={project.imageUrl} 
+                alt={`${project.title} logo`}
+                className="w-16 h-16 object-contain"
+              />
+            ) : (
+              <span className="text-4xl">{project.emoji}</span>
+            )}
+          </figure>
           <h2 className="text-2xl font-bold text-cyan-400">{project.title}</h2>
         </div>
         
@@ -50,7 +61,7 @@ const ModaleProject: React.FC<ModaleProjectProps> = ({ project, onClose }) => {
         
         <section className="mb-5">
           <h3 className="text-lg font-semibold text-slate-300 mb-1">Contexte</h3>
-          <p className="text-slate-400 pl-8">{project.contexte}</p>
+          <p className="text-slate-400 pl-8 whitespace-pre-line">{project.contexte}</p>
         </section>
         
         <section className="mb-5">
@@ -83,6 +94,19 @@ const ModaleProject: React.FC<ModaleProjectProps> = ({ project, onClose }) => {
                 <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
               </svg>
               GitHub
+            </a>
+          )}
+          {project.videoUrl && (
+            <a 
+              href={project.videoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-200 rounded-md transition flex items-center"
+            >
+              <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+              </svg>
+              Vidéo
             </a>
           )}
           <button 

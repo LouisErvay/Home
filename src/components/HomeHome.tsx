@@ -16,7 +16,8 @@ const HomeHome: React.FC = () => {
             Passionné par le développement robuste et performant, je mets à profit mes compétences pour créer des solutions efficaces et durables. <span className="text-amber-400">✨</span>
           </p>
           <p>
-            Bac + 3 Concepteur Développeur d'Applications avec des expériences en ERP et API REST, je cherche actuellement une alternance pour confirmer ma formation et poursuivre en Master.
+            Bac + 3 Concepteur Développeur d'Applications avec des expériences en ERP, Backend et API REST.<br/>
+            Je cherche actuellement une alternance pour confirmer ma formation et poursuivre en Master.
           </p>
         </div>
       </article>

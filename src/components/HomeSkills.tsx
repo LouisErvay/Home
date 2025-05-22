@@ -14,72 +14,72 @@ const skillsList: Skill[] = [
   { 
     pid: 1001, 
     name: "Python", 
-    level: 90, 
+    level: 82, 
     category: "LANGUAGE", 
     desc: "Django, FastAPI, Tensorflow, PyTorch, Keras, Scikit-learn, Pandas, Numpy, Matplotlib" 
   },
   { 
     pid: 1002, 
     name: "Java", 
-    level: 80, 
+    level: 70, 
     category: "LANGUAGE", 
     desc: "Spring Boot, Hibernate, JPA, JUnit, Mockito, Maven, Gradle" 
   },
   { 
     pid: 1003, 
     name: "JavaScript/TypeScript", 
-    level: 75, 
+    level: 72, 
     category: "LANGUAGE", 
-    desc: "React, Node.js, Express, MongoDB, MySQL, PostgreSQL, Docker, Git, HTML/CSS" 
+    desc: "React, Data flow, API communication" 
   },
   { 
     pid: 1005, 
     name: "SQL", 
-    level: 85, 
+    level: 74, 
     category: "DATABASE", 
-    desc: "Framework CSS utilitaire pour créer des interfaces utilisateur personnalisées rapidement." 
+    desc: "MySQL, MariaDB, SQLite, PostgreSQL | Jointures, Subqueries, Normalization" 
   },
   { 
     pid: 1006, 
-    name: "Git", 
-    level: 90, 
-    category: "TOOL", 
-    desc: "Gestion de versions et collaboration sur des projets de développement." 
+    name: "HTML/CSS", 
+    level: 78, 
+    category: "FRONTEND", 
+    desc: "HTML, CSS, Tailwind, SASS" 
   },
   { 
     pid: 1007, 
-    name: "HTML/CSS", 
-    level: 85, 
-    category: "FRONTEND", 
-    desc: "Création de structures de pages web et stylisation pour une expérience utilisateur optimale." 
+    name: "Git", 
+    level: 70, 
+    category: "TOOL", 
+    desc: "GitHub, GitLab, GitFlow, CI/CD" 
   },
   { 
     pid: 1008, 
     name: "Gestion de projet", 
-    level: 55, 
+    level: 58, 
     category: "SOFTSKILL", 
-    desc: "Création de structures de pages web et stylisation pour une expérience utilisateur optimale." 
+    desc: "Agile, Scrum, Kanban, Jira, Trello" 
   },
   { 
     pid: 1009, 
-    name: "Docker", 
-    level: 55, 
-    category: "TOOL", 
-    desc: "Création de structures de pages web et stylisation pour une expérience utilisateur optimale." 
-  },
-  { 
-    pid: 1010, 
-    name: "CI/CD", 
-    level: 55, 
-    category: "DEVOPS", 
-    desc: "Gestion de versions et collaboration sur des projets de développement." 
-  },
-  { 
-    pid: 1011, 
     name: "Tests", 
     level: 70, 
     category: "QUALITY", 
-    desc: "Tests unitaires et tests de non-régression, avec JUnit, Mockito" 
+    desc: "JUnit, Mockito, Jest, Selenium, HTTPie, Postman" 
+  },
+  { 
+    pid: 1010, 
+    name: "Docker", 
+    level: 52, 
+    category: "TOOL", 
+    desc: "Docker, Docker Compose, Docker Swarm" 
+  },
+  { 
+    pid: 1011, 
+    name: "CI/CD", 
+    level: 52, 
+    category: "DEVOPS", 
+    desc: "GitHub Actions, Test, Build, Deploy" 
   }
 ];
 

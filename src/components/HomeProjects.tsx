@@ -4,64 +4,39 @@ import ModaleProject from './ModaleProject';
 interface Project {
   id: number;
   emoji: string;
+  imageUrl?: string;
   title: string;
   description: string;
   contexte: string;
   fonctionnalites: string[];
   technologies: string[];
   github?: string;
+  videoUrl?: string;
 }
 
 const projects: Project[] = [
   {
     id: 1,
-    emoji: "🚀",
-    title: "Projet_Alpha",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.",
-    contexte: "Projet personnel réalisé dans le cadre d'une formation pour explorer les possibilités de React et Node.js.",
-    fonctionnalites: ["Authentification utilisateur", "Tableau de bord interactif", "Gestion des données en temps réel", "API RESTful"],
-    technologies: ["React", "Node.js", "MongoDB", "Express"],
-    github: "https://github.com/username/projet-alpha"
+    emoji: "🛠️",
+    imageUrl: "/buildit-logo.png",
+    title: "BuildIT",
+    description: "Plateforme de gestion de projets assistée par IA",
+    contexte: "Projet de groupe réalisé dans le cadre d'une formation pour explorer les possibilités de React, Django et l'IA. \n\nJ'ai réalisé le backend, Token JWT, Sécurité, Permissions, Exceptions, Models, Vues, Serializers",
+    fonctionnalites: ["Authentification utilisateur", "Création de projet assistée par IA", "Gestion d'un projet par catégorie et par taches", "Invitation d'autres utilisateur à son projet, gestion des permissions"],
+    technologies: ["React", "TypeScript", "Django", "SQLite"],
+    github: "https://github.com/Theorhd/buildIt",
+    videoUrl: "https://www.youtube.com/watch?v=EWYAAEtVP_s&ab_channel=LouisErvay"
   },
   {
     id: 2,
-    emoji: "🔍",
-    title: "Projet_Beta",
-    description: "Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis.",
-    contexte: "Développé en collaboration avec une équipe de 3 personnes pour un client dans le secteur e-commerce.",
-    fonctionnalites: ["Recherche avancée", "Filtrage par catégories", "Système de paiement sécurisé", "Gestion des stocks"],
-    technologies: ["TypeScript", "Next.js", "PostgreSQL"],
-    github: "https://github.com/username/projet-beta"
-  },
-  {
-    id: 3,
-    emoji: "📊",
-    title: "Projet_Gamma",
-    description: "Sed commodo, leo at suscipit dictum, quam est porttitor sapien.",
-    contexte: "Projet open-source visant à créer un outil de visualisation de données pour les petites entreprises.",
-    fonctionnalites: ["Tableaux de bord personnalisables", "Importation de données CSV/Excel", "Génération de rapports PDF", "Partage de visualisations"],
-    technologies: ["Vue.js", "Express", "MySQL"],
-    github: "https://github.com/username/projet-gamma"
-  },
-  {
-    id: 4,
-    emoji: "🛠️",
-    title: "Projet_Delta",
-    description: "Fusce vehicula dolor arcu, sit amet blandit dolor mollis nec.",
-    contexte: "Application développée durant un hackathon de 48h pour résoudre des problèmes de gestion de projets.",
-    fonctionnalites: ["Gestion de tâches", "Suivi du temps", "Collaboration en temps réel", "Notifications"],
-    technologies: ["Angular", "Firebase", "Tailwind"],
-    github: "https://github.com/username/projet-delta"
-  },
-  {
-    id: 5,
-    emoji: "🌐",
-    title: "Projet_Epsilon",
-    description: "Donec nec justo eget felis facilisis fermentum.",
-    contexte: "Site web créé pour une association locale afin d'améliorer sa présence en ligne.",
-    fonctionnalites: ["Système de blog", "Formulaire de contact", "Galerie d'images", "Calendrier d'événements"],
-    technologies: ["Svelte", "GraphQL", "Prisma"],
-    github: "https://github.com/username/projet-epsilon"
+    emoji: "🎶",
+    title: "MusicApp",
+    description: "C'est une simple application de gestion de musiques permettant de lire de scanner dans un dossier donner tous les sous-dossiers et fichiers audio compatibles.",
+    contexte: "C'est un projet personnel développé seul. \nIl me permet de gérer mes musiques et de les écouter comme je le souhaite.",
+    fonctionnalites: ["Fonctions d'un player de base", "Filtrage par tags"],
+    technologies: ["Python", "DearPyGui", "Pygames", "SQLite"],
+    github: "https://github.com/LouisErvay/MusicApp",
+    videoUrl: "https://www.youtube.com/watch?v=8I0iEBEAsuY&ab_channel=LouisErvay"
   }
 ];
 
@@ -96,7 +71,17 @@ const HomeProjects: React.FC = () => {
               onClick={() => openModal(project)}
             >
               <article className="flex">
-                <figure className="text-3xl mr-4 self-center">{project.emoji}</figure>
+                <figure className="mr-4 self-center">
+                  {project.imageUrl ? (
+                    <img 
+                      src={project.imageUrl} 
+                      alt={`${project.title} logo`}
+                      className="w-12 h-12 object-contain"
+                    />
+                  ) : (
+                    <span className="text-3xl">{project.emoji}</span>
+                  )}
+                </figure>
                 <div>
                   <h3 className="text-xl font-bold text-slate-400 mb-1">{project.title}</h3>
                   <p className="text-amber-400 font-semibold">{formatTechnologies(project.technologies)}</p>
