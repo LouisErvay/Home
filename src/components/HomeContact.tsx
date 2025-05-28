@@ -1,12 +1,14 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import emailjs from 'emailjs-com';
-import ReCAPTCHA from 'react-google-recaptcha';
+
+// Import conditionnel de ReCAPTCHA
+let ReCAPTCHA: any = null;
 
 // Définition des variables d'environnement par défaut
 const EMAILJS_SERVICE_ID = 'emailjs-service-id';
 const EMAILJS_TEMPLATE_ID = 'emailjs-template-id';
 const EMAILJS_USER_ID = 'emailjs-user-id';
-const RECAPTCHA_SITE_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"; // Clé de test de google recaptcha 
+const RECAPTCHA_SITE_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"; // Clé de test de google recaptcha
 
 const HomeContact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -18,7 +20,46 @@ const HomeContact: React.FC = () => {
   const [sending, setSending] = useState(false);
   const [sendStatus, setSendStatus] = useState<{type: 'success' | 'error', message: string} | null>(null);
   const [captchaVerified, setCaptchaVerified] = useState(false);
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
+  const [showRecaptcha, setShowRecaptcha] = useState(false);
+  const recaptchaRef = useRef<any>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Observer pour charger reCAPTCHA quand l'utilisateur arrive sur la section
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !recaptchaLoaded) {
+          loadRecaptcha();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, [recaptchaLoaded]);
+
+  const loadRecaptcha = async () => {
+    if (recaptchaLoaded) return;
+    
+    try {
+      // Import dynamique de react-google-recaptcha
+      const { default: ImportedReCAPTCHA } = await import('react-google-recaptcha');
+      ReCAPTCHA = ImportedReCAPTCHA;
+      setRecaptchaLoaded(true);
+      setShowRecaptcha(true);
+    } catch (error) {
+      console.error('Erreur lors du chargement de reCAPTCHA:', error);
+    }
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -54,7 +95,6 @@ const HomeContact: React.FC = () => {
         message: `Message de ${formData.name} | adresse mail : ${formData.email}\nMessage :\n${formData.message}`
       };
       
-      // Essayer d'utiliser les variables d'environnement via import.meta.env, sinon utiliser les valeurs par défaut
       await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID || EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID || EMAILJS_TEMPLATE_ID,
@@ -67,7 +107,6 @@ const HomeContact: React.FC = () => {
         message: 'Votre message a été envoyé avec succès!'
       });
       
-      // Réinitialiser le formulaire et le captcha après soumission
       setFormData({
         name: '',
         email: '',
@@ -88,7 +127,7 @@ const HomeContact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="mt-16 scroll-mt-16">
+    <section id="contact" className="mt-16 scroll-mt-16" ref={sectionRef}>
       <div className="flex items-center mb-4">
         <h2 className="text-2xl font-bold text-cyan-400">Contact Professionnel</h2>
       </div>
@@ -167,12 +206,22 @@ const HomeContact: React.FC = () => {
             
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="w-full md:w-auto">
-                <ReCAPTCHA
-                  ref={recaptchaRef}
-                  sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY || RECAPTCHA_SITE_KEY}
-                  onChange={handleCaptchaChange}
-                  theme="dark"
-                />
+                {!showRecaptcha && recaptchaLoaded === false && (
+                  <div className="w-[304px] h-[78px] bg-slate-800 border border-slate-600 rounded flex items-center justify-center text-slate-400 text-sm">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-4 h-4 border-2 border-cyan-400 border-t-transparent rounded-full animate-spin"></div>
+                      <span>Chargement du captcha...</span>
+                    </div>
+                  </div>
+                )}
+                {showRecaptcha && ReCAPTCHA && (
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY || RECAPTCHA_SITE_KEY}
+                    onChange={handleCaptchaChange}
+                    theme="dark"
+                  />
+                )}
               </div>
               <div className="w-full md:w-auto">
                 <button

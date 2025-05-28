@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import LazyYouTube from './LazyYouTube';
 
 interface Project {
   id: number;
@@ -188,13 +189,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         {project.videoUrl && (
           <div className="hidden lg:block w-96 flex-shrink-0">
             <div className="aspect-video">
-              <iframe
-                src={`https://www.youtube.com/embed/${getYouTubeVideoId(project.videoUrl)}`}
+              <LazyYouTube
+                videoId={getYouTubeVideoId(project.videoUrl) || ''}
                 title={`Vidéo de ${project.title}`}
                 className="w-full h-full rounded-md"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
               />
             </div>
           </div>

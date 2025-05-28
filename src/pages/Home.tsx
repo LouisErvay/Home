@@ -82,7 +82,7 @@ const Home: React.FC = () => {
           <p>
             Portfolio Louis ERVAY développeur backend full-stack Java Spring Boot Python Django JPA Hibernate 
             API REST microservices React TypeScript JavaScript HTML CSS Tailwind Git Docker CI/CD 
-            développement web applications entreprise alternance master informatique concepteur développeur applications
+            développement web applications entreprise
             formation professionnelle expérience ERP base de données SQL MySQL PostgreSQL SQLite
             tests unitaires JUnit Mockito Jest gestion projet agile scrum développeur junior senior
             stage emploi CDI alternance contrat professionnalisation développement logiciel

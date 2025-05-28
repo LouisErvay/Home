@@ -18,11 +18,10 @@ const HomeHome: React.FC = () => {
           <p className="text-slate-300 mb-4">Développeur Backend | JAVA Spring Boot | PYTHON Django | JPA Hibernate | APIs REST | React TypeScript</p>
           <p className="mb-4">
             Passionné par le développement backend robuste et performant, je conçois des solutions techniques innovantes avec Java Spring Boot et Python Django. 
-            Expert en APIs REST, microservices et architecture logicielle moderne. <span className="text-amber-400">✨</span>
+            Expert en APIs REST, microservices et architecture logicielle moderne.
           </p>
           <p>
-            <strong>Bac + 3 Concepteur Développeur d'Applications</strong> avec des expériences concrètes en développement ERP, architectures Backend et intégration API REST.<br/>
-            Actuellement en recherche d'une <strong>alternance Master</strong> pour approfondir mes compétences en développement full-stack et confirmer ma formation.
+            <strong>Bac + 3 Concepteur Développeur d'Applications</strong> avec des expériences concrètes en architectures Backend, intégration API REST et développement ERP.<br/>
           </p>
           
           {/* Mots-clés SEO invisibles */}
