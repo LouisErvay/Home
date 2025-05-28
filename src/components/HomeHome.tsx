@@ -3,21 +3,32 @@ import React from 'react';
 const HomeHome: React.FC = () => {
   return (
     <header id="home" className="pt-16">
+      {/* H1 invisible pour le SEO avec mots-clés optimisés */}
+      <h1 className="sr-only">
+        Louis ERVAY - Développeur Backend Java Spring Boot Python Django JPA Hibernate API REST React TypeScript Alternance Master Concepteur Développeur Applications Portfolio
+      </h1>
+      
       <div className="flex items-center mb-4 text-xl">
-        <span className="text-2xl font-bold text-cyan-400">Home</span>
+        <h2 className="text-2xl font-bold text-cyan-400">Accueil</h2>
       </div>
       <article className="border border-slate-400 p-6 mb-8 rounded-md hover:border-cyan-400 transition-all duration-300 hover:shadow-[0_0_10px_rgba(34,211,238,0.2)]">
         
         <div className="pl-4 border-l-2 border-slate-400">
-          <h1 className="text-4xl font-bold mb-2 text-amber-400">Louis ERVAY</h1>
-          <p className="text-slate-300 mb-4">Développeur Backend | JAVA | PYTHON | Spring Boot | JPA | Django | APIs</p>
+          <div className="text-4xl font-bold mb-2 text-amber-400">Louis ERVAY</div>
+          <p className="text-slate-300 mb-4">Développeur Backend | JAVA Spring Boot | PYTHON Django | JPA Hibernate | APIs REST | React TypeScript</p>
           <p className="mb-4">
-            Passionné par le développement robuste et performant, je mets à profit mes compétences pour créer des solutions efficaces et durables. <span className="text-amber-400">✨</span>
+            Passionné par le développement backend robuste et performant, je conçois des solutions techniques innovantes avec Java Spring Boot et Python Django. 
+            Expert en APIs REST, microservices et architecture logicielle moderne. <span className="text-amber-400">✨</span>
           </p>
           <p>
-            Bac + 3 Concepteur Développeur d'Applications avec des expériences en ERP, Backend et API REST.<br/>
-            Je cherche actuellement une alternance pour confirmer ma formation et poursuivre en Master.
+            <strong>Bac + 3 Concepteur Développeur d'Applications</strong> avec des expériences concrètes en développement ERP, architectures Backend et intégration API REST.<br/>
+            Actuellement en recherche d'une <strong>alternance Master</strong> pour approfondir mes compétences en développement full-stack et confirmer ma formation.
           </p>
+          
+          {/* Mots-clés SEO invisibles */}
+          <div className="sr-only" aria-hidden="true">
+            Développeur Java Spring Boot Python Django API REST JPA Hibernate React TypeScript alternance master développement web backend frontend portfolio Louis ERVAY concepteur développeur applications
+          </div>
         </div>
       </article>
   

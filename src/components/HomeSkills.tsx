@@ -136,7 +136,7 @@ const HomeSkills: React.FC = () => {
   return (
     <section id="skills" className="mt-16 scroll-mt-16">
       <div className="flex items-center mb-4">
-        <span className="text-2xl font-bold text-cyan-400">Skills</span>
+        <h2 className="text-2xl font-bold text-cyan-400">Compétences Techniques</h2>
       </div>
 
       {/* Contrôles de tri */}

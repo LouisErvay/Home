@@ -70,11 +70,24 @@ const Home: React.FC = () => {
     <div className={`min-h-screen ${background} text-slate-400 overflow-x-hidden w-full`}>
       {background === 'bg-dots-wave' && <div className="dots-layer" aria-hidden="true"></div>}
       <Menu activeSection={activeSection} setActiveSection={setActiveSection} />
-      <main className="max-w-[1200px] mx-auto px-4 flex-grow w-full text-sm leading-relaxed">
+      <main className="max-w-[1200px] mx-auto px-4 flex-grow w-full text-sm leading-relaxed" role="main">
         <HomeHome />
         <HomeSkills />
         <HomeProjects />
         <HomeContact />
+        
+        {/* Contenu SEO invisible pour améliorer le référencement */}
+        <section className="sr-only" aria-hidden="true">
+          <h2>Expertise Technique</h2>
+          <p>
+            Portfolio Louis ERVAY développeur backend full-stack Java Spring Boot Python Django JPA Hibernate 
+            API REST microservices React TypeScript JavaScript HTML CSS Tailwind Git Docker CI/CD 
+            développement web applications entreprise alternance master informatique concepteur développeur applications
+            formation professionnelle expérience ERP base de données SQL MySQL PostgreSQL SQLite
+            tests unitaires JUnit Mockito Jest gestion projet agile scrum développeur junior senior
+            stage emploi CDI alternance contrat professionnalisation développement logiciel
+          </p>
+        </section>
       </main>
       <Footer />
       

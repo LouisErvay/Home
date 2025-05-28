@@ -47,11 +47,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 {project.imageUrl ? (
                   <img 
                     src={project.imageUrl} 
-                    alt={`${project.title} logo`}
+                    alt={`Logo du projet ${project.title} - ${project.technologies.join(', ')}`}
                     className="w-12 h-12 object-contain"
+                    loading="lazy"
                   />
                 ) : (
-                  <span className="text-3xl">{project.emoji}</span>
+                  <span className="text-3xl" role="img" aria-label={`Icône du projet ${project.title}`}>{project.emoji}</span>
                 )}
               </figure>
               <div>
