@@ -4,8 +4,7 @@ const HomeHome: React.FC = () => {
   return (
     <header id="home" className="pt-16">
       <div className="flex items-center mb-4 text-xl">
-        <span className="text-xl mr-2 text-slate-400">$ </span>
-        <span className="text-2xl font-bold text-cyan-400">cd Home</span>
+        <span className="text-2xl font-bold text-cyan-400">Home</span>
       </div>
       <article className="border border-slate-400 p-6 mb-8 rounded-md hover:border-cyan-400 transition-all duration-300 hover:shadow-[0_0_10px_rgba(34,211,238,0.2)]">
         

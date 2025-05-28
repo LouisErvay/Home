@@ -44,8 +44,7 @@ const HomeProjects: React.FC = () => {
   return (
     <section id="projects" className="mt-16 scroll-mt-16">
       <div className="flex items-center mb-4">
-        <span className="text-2xl mr-2 text-slate-400">$ </span>
-        <span className="text-2xl font-bold text-cyan-400">cd ../Projects</span>
+        <span className="text-2xl font-bold text-cyan-400">Projects</span>
       </div>
       
       <div className="space-y-6">
